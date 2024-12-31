@@ -1,0 +1,136 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 22.48649329714938,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 328.08241394582257,
+            "y": 0
+          },
+          "nodeIndex": "Orders",
+          "nodeLineageTag": "5e556994-be6c-4342-93d9-fed334a835f4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 22.511602465462133,
+            "y": 340.65262137669697
+          },
+          "nodeIndex": "Returns",
+          "nodeLineageTag": "95410193-668f-4cba-b4bc-7a4685247abc",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 328.04389243594676,
+            "y": 340.71212298431504
+          },
+          "nodeIndex": "BudgetAmount",
+          "nodeLineageTag": "df44645c-993d-4890-bcd7-82f4f783cccb",
+          "size": {
+            "height": 266.32133091410572,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 22.48649329714938,
+            "y": 491.85726838637481
+          },
+          "nodeIndex": "*Measures",
+          "nodeLineageTag": "eca45a9c-d9fb-428c-9ec7-72296f52d868",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 605.59585138251134,
+            "y": 338.68497834098633
+          },
+          "nodeIndex": "Calendar",
+          "nodeLineageTag": "2399811b-55cb-4a9c-b886-4796b19a1351",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 20.10013659478534,
+            "y": 617.90200873438459
+          },
+          "nodeIndex": "Parameter",
+          "nodeLineageTag": "104d1bc5-ea7a-43a1-99d1-d6645e8b1607",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 869.495714787726,
+            "y": 284.9510043671923
+          },
+          "nodeIndex": "After Month Sales",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1133.3955781929408,
+            "y": 284.9510043671923
+          },
+          "nodeIndex": "Product-ABC",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1397.2954415981553,
+            "y": 284.9510043671923
+          },
+          "nodeIndex": "Return Orders",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 70.955543900968792,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

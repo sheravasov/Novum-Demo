@@ -1,0 +1,67 @@
+table Product-ABC
+	lineageTag: 0486ec1e-e3a4-4a0c-8e4d-e8eb7698ef9a
+
+	column 'Product Name'
+		lineageTag: e3fab797-c7e7-46ca-a785-d95b9428be29
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Product Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Actual'
+		lineageTag: 3f8057d8-ee90-4a32-9697-7ddb1ee2bb2d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Total Actual]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cumulative Actual' = ```
+			
+			    CALCULATE(SUM('Product-ABC'[Total Actual]),
+			        ALL('Product-ABC'), 'Product-ABC'[Total Actual]>=EARLIER('Product-ABC'[Total Actual]))
+			```
+		lineageTag: 1b75bc74-9d01-495b-94aa-e41f89458f77
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cumulative %' = ```
+			
+			    'Product-ABC'[Cumulative Actual] / SUM('Product-ABC'[Total Actual])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f43faf9b-7155-46c4-83f4-2d9ce3d18efa
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segments = ```
+			
+			    SWITCH(
+			        TRUE(),
+			        'Product-ABC'[Cumulative %] <= 0.7, "A",
+			        'Product-ABC'[Cumulative %] <= 0.9, "B",
+			        "C")
+			```
+		lineageTag: 2cf7acaf-dd97-4494-9218-90ceb6c564bd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Product-ABC = calculated
+		mode: import
+		source =
+				
+				SUMMARIZE(
+				    Orders,
+				    Orders[Product Name],
+				    "Total Actual", SUM(Orders[Actual]))
+
+	annotation PBI_Id = 363541ccc73d4214bf5d42e4b99b03e9
+

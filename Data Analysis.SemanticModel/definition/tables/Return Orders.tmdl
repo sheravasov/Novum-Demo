@@ -1,0 +1,229 @@
+table 'Return Orders'
+	lineageTag: 9fda9a08-ab88-4439-8647-3ea494e7820b
+
+	column 'Row ID'
+		lineageTag: aae90859-1278-42c2-ae44-8054aafff58a
+		summarizeBy: count
+		isNameInferred
+		sourceColumn: Orders[Row ID]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Order ID'
+		lineageTag: 0bc2a3ec-0f34-4e2a-bdcd-e330359ca6c5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Order ID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date'
+		formatString: General Date
+		lineageTag: 10a72412-d2c8-4f89-b7e8-e08f89bf93a2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Order Date]
+
+		variation Variation
+			isDefault
+			relationship: df0eaa26-6ad2-431c-8a12-13d172f3d81a
+			defaultHierarchy: LocalDateTable_86dd66c8-75f6-4aa9-8090-41d9d616fa56.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship Date'
+		formatString: General Date
+		lineageTag: c710a050-11e6-442a-bfa8-e6f3158d2c15
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Ship Date]
+
+		variation Variation
+			isDefault
+			relationship: 3c94cf29-10da-4e84-8785-4fbbbc2d9747
+			defaultHierarchy: LocalDateTable_58231ff7-4e78-4a04-a995-a315dd6209db.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship Mode'
+		lineageTag: 2523ddf7-3f97-4832-8065-cc4faa93db78
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Ship Mode]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer ID'
+		lineageTag: 6349404a-ec60-460f-9cdd-a7d7f5b701fa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Customer ID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Name'
+		lineageTag: fd862cef-4a3e-4c3d-9c78-93464f5924fc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Customer Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		lineageTag: 39891f99-922d-4f5f-bbf3-d1dc8a578371
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Segment]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		lineageTag: 5ae74704-f3c4-42c2-8b32-58de785bb53c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Country]
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		lineageTag: bb2f8018-9420-456f-a5bd-dbab5068a09e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[City]
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		lineageTag: 7bc337f1-a5db-437a-9417-b5d24e186d32
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[State]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Postal Code'
+		lineageTag: 823cfe31-36a5-4124-a5f6-2f936b76c96c
+		summarizeBy: count
+		isNameInferred
+		sourceColumn: Orders[Postal Code]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Region
+		lineageTag: 045c03be-fa42-4d31-94df-3487a70f336c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Region]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product ID'
+		lineageTag: cbb0533a-fe3c-4f18-9212-193f68c3db78
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Product ID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		lineageTag: 8f9a08cd-8626-49ec-a0f6-6907732b3532
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Category]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub-Category
+		lineageTag: 1381b6d7-fba2-43c4-b367-21c0ca905aad
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Sub-Category]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		lineageTag: 0cbeed47-2fd5-4d1c-ac68-0b62095f4c93
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Product Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Price'
+		lineageTag: 4a71ab15-5510-41ea-bf8b-246119d51db8
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Orders[Sales Price]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Quantity
+		lineageTag: a0bd0df2-a49a-447e-937e-77d68cc05bce
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Orders[Quantity]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Discount
+		lineageTag: 24ae11ed-f001-4767-99c4-4ab8969bdfc7
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Orders[Discount]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Profit
+		lineageTag: 1ae2036b-b923-46f4-9d9f-f624e3e1dd2d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Orders[Profit]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Actual
+		lineageTag: 6cbc1289-603a-470c-abf4-925f1e4ba360
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Orders[Actual]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'First order date EOM'
+		formatString: General Date
+		lineageTag: e272a930-12ea-46c8-9b72-f3eba9af51f8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[First order date EOM]
+
+		variation Variation
+			isDefault
+			relationship: 7b264d53-1a65-4323-8cfd-24dac202e8e2
+			defaultHierarchy: LocalDateTable_d746e804-9d36-4ca5-8b19-db9c5161c0f2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Return Orders' = calculated
+		mode: import
+		source =
+				
+				FILTER(
+				    Orders,
+				    Orders[Order ID] IN DISTINCT(Returns[Order ID]))
+
+	annotation PBI_Id = 7d45dafb25824015ba59a6437a7685bf
+

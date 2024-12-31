@@ -1,0 +1,126 @@
+table BudgetAmount
+	lineageTag: df44645c-993d-4890-bcd7-82f4f783cccb
+
+	column 'Source.Name'
+		dataType: string
+		isHidden
+		lineageTag: 59b539a1-e46e-4937-aad3-12bcb5daddb2
+		summarizeBy: none
+		sourceColumn: Source.Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub-Category
+		dataType: string
+		lineageTag: 70fd4d1e-48d5-4afb-9285-3fdf5fa0d982
+		summarizeBy: none
+		sourceColumn: Sub-Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Central
+		dataType: double
+		lineageTag: d176c98e-f4f3-4346-993c-fbd0bd0b1d1d
+		summarizeBy: sum
+		sourceColumn: Central
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column East
+		dataType: double
+		lineageTag: 1d91bd3a-2ff7-466a-922d-8242f66fe75e
+		summarizeBy: sum
+		sourceColumn: East
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column South
+		dataType: double
+		lineageTag: da31c361-f584-48d2-b0be-03a0d7b695b4
+		summarizeBy: sum
+		sourceColumn: South
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column West
+		dataType: double
+		lineageTag: 2d91ac56-c246-46f8-a7a2-94b95b4ec897
+		summarizeBy: sum
+		sourceColumn: West
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date = ```
+			
+			VAR YearText = LEFT('BudgetAmount'[Source.Name], 4)
+			VAR MonthAbbreviation = MID('BudgetAmount'[Source.Name], 6, 3)
+			VAR MonthNumber = 
+			    SWITCH(MonthAbbreviation,
+			        "Jan", 1,
+			        "Feb", 2,
+			        "Mar", 3,
+			        "Apr", 4,
+			        "May", 5,
+			        "Jun", 6,
+			        "Jul", 7,
+			        "Aug", 8,
+			        "Sep", 9,
+			        "Oct", 10,
+			        "Nov", 11,
+			        "Dec", 12,
+			        BLANK()
+			    )
+			RETURN
+			    IF(
+			        ISNUMBER(MonthNumber),
+			        DATE(VALUE(YearText), MonthNumber, 1),
+			        BLANK()
+			    )
+			
+			```
+		formatString: Short Date
+		lineageTag: e0bec251-83bc-47ef-a84f-c54f6ec2906c
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Grand Total' = BudgetAmount[Central] + BudgetAmount[East] + BudgetAmount[South] + BudgetAmount[West]
+		formatString: 0.00
+		lineageTag: eb5ea9f9-3906-4076-b1fa-2b3d154edd72
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BudgetAmount = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\Heravasov\Desktop\Novum\BudgetAmount"),
+				    #"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
+				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"Sub-Category", type text}, {"Central", type number}, {"East", type number}, {"South", type number}, {"West", type number}, {"Grand Total", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Grand Total"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

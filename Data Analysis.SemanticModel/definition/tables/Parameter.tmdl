@@ -1,0 +1,51 @@
+table Parameter
+	lineageTag: 104d1bc5-ea7a-43a1-99d1-d6645e8b1607
+
+	column Parameter
+		lineageTag: 975f6f7d-78fe-447b-a404-8da54990793d
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: c81f9da2-4e5f-49c2-8425-8cfc54b97442
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: fdd6c103-6b52-4de1-b45e-9ad7106ccbcd
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parameter = calculated
+		mode: import
+		source =
+				{
+				    ("Net Actual", NAMEOF('*Measures'[Net Actual]), 0),
+				    ("Net Profit", NAMEOF('*Measures'[Net Profit]), 1),
+				    ("Total Actual", NAMEOF('*Measures'[Total Actual]), 2),
+				    ("Total Profit", NAMEOF('*Measures'[Total Profit]), 3),
+				    ("Yoy Net Profit Growth", NAMEOF('*Measures'[Yoy Net Profit Growth]), 4)
+				}
+
+	annotation PBI_Id = 69747e69634949f99aefd97a164e06b8
+

@@ -1,0 +1,54 @@
+table Returns
+	lineageTag: 95410193-668f-4cba-b4bc-7a4685247abc
+
+	column Returned
+		dataType: string
+		lineageTag: 4212dfb1-c80a-4b05-8637-aac12f903b96
+		summarizeBy: none
+		sourceColumn: Returned
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: 883826c1-1026-4097-8428-b6053e90b8ed
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrDate = ```
+			
+			LOOKUPVALUE(
+			    Orders[Order Date],
+			    Orders[Order ID], Returns[Order ID]
+			)
+			
+			```
+		formatString: Short Date
+		lineageTag: 325427b4-468b-4245-aaae-cf8262dbe14c
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: b55415a0-13f2-4e12-a6ca-b86784afee57
+			defaultHierarchy: LocalDateTable_860d196d-3080-4d5c-b0eb-d391492e0c3b.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Returns = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("sql-candidatetesting.database.windows.net"),
+				    #"sqldb-candidatetesting" = Source{[Name="sqldb-candidatetesting"]}[Data],
+				    dbo_Returns = #"sqldb-candidatetesting"{[Schema="dbo",Item="Returns"]}[Data]
+				in
+				    dbo_Returns
+
+	annotation PBI_ResultType = Table
+

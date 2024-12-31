@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "ddf9db7ca860e0162cc4",
+  "position": {
+    "x": 275.71428571428572,
+    "y": 240.00000000000003,
+    "z": 11000,
+    "height": 295.71428571428572,
+    "width": 391.42857142857144,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Customer Performance",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "693 of our 793 customers made purchases in 2017, which resulted in an increase in the average customer value in 2017.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "When we look at the areas where the customer segments are Corporate and Home Office, we see that we get more income from these customers, on the contrary, we encounter more problems with Cunsomer type customers and the Return rate is higher in Cunsomer type customers compared to other segments. Making more investments in Corporate and Home Office will be a more effective plan for the future.",
+                    "textStyle": {
+                      "fontSize": "16px"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "isHidden": true
+}

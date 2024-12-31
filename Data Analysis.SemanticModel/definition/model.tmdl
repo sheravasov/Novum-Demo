@@ -1,0 +1,43 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Transform File from BudgetAmount'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Transform File from BudgetAmount\Helper Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation PBI_QueryOrder = ["Orders","Returns","BudgetAmount","Parameter1","Transform Sample File","Sample File","Transform File","*Measures"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.138.1452.0 (24.11)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Orders
+ref table DateTableTemplate_a32197e1-bae4-4c31-8697-ab6c3f06ba24
+ref table Returns
+ref table BudgetAmount
+ref table *Measures
+ref table Calendar
+ref table LocalDateTable_e4cb9b33-f24d-4913-8631-66698f379737
+ref table LocalDateTable_860d196d-3080-4d5c-b0eb-d391492e0c3b
+ref table Parameter
+ref table LocalDateTable_5ff25312-4144-4877-8562-fafadc7030ab
+ref table 'After Month Sales'
+ref table Product-ABC
+ref table 'Return Orders'
+ref table LocalDateTable_86dd66c8-75f6-4aa9-8090-41d9d616fa56
+ref table LocalDateTable_58231ff7-4e78-4a04-a995-a315dd6209db
+ref table LocalDateTable_d746e804-9d36-4ca5-8b19-db9c5161c0f2
+
+ref cultureInfo en-US
+

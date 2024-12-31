@@ -1,0 +1,270 @@
+table *Measures
+	lineageTag: eca45a9c-d9fb-428c-9ec7-72296f52d868
+
+	measure 'Total Returned Actual' = ```
+			
+			VAR ReturnedOrderIDs = VALUES(Returns[Order ID])
+			VAR TotalReturnedValue = 
+			    CALCULATE(
+			        SUM(Orders[Actual]),
+			        Orders[Order ID] IN ReturnedOrderIDs
+			    )
+			RETURN
+			    TotalReturnedValue
+			```
+		displayFolder: General
+		lineageTag: 09bbdfa4-d7f1-4ca7-8d2c-c031c72e3c5c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Actual' = SUM(Orders[Actual])
+		displayFolder: General
+		lineageTag: f48ca646-49ee-4bfa-8046-1a5c8d7e2c56
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Returned Orders Count' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Orders[Order ID]),
+			    FILTER(Orders, Orders[Order ID] IN VALUES(Returns[Order ID])))
+		formatString: 0
+		displayFolder: General
+		lineageTag: 4a57a7e2-8c71-4c43-af1a-6acb58bdb9cc
+
+	measure 'Budget vs Actual %' =
+			
+			[Total Budget Amount] / [Total Actual]
+		displayFolder: Performance
+		lineageTag: e1d9d1df-d01d-411f-ae8d-2bce90884af2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Net Actual' = ```
+			[Total Actual] - [Total Returned Actual]
+			
+			```
+		displayFolder: General
+		lineageTag: bd8a5dee-9b43-4b82-9f43-b5aca8227477
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Actual YTD' = ```
+			
+			CALCULATE(
+			    [Total Actual], 
+			    DATESYTD(Calendar[Date]))
+			```
+		displayFolder: Time Intelligence
+		lineageTag: 7249bbd1-3b05-4bb8-968f-090426912dad
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Previous Year Actual' = ```
+			
+			CALCULATE(
+			    [Total Actual], 
+			    SAMEPERIODLASTYEAR(Calendar[Date]))
+			```
+		displayFolder: Time Intelligence
+		lineageTag: bb914c4b-30c9-48f4-a778-5b67f5a83248
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YoY Actual Growth' = ```
+			
+			DIVIDE(
+			    [Total Actual] - [Previous Year Actual], 
+			    [Previous Year Actual], 
+			    0)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Performance
+		lineageTag: 041e3f0c-b295-4421-886d-a8b554b08da1
+
+	measure 'YoY Sales Growth Color' = IF([YoY Actual Growth]>0, "Green", "Red")
+		isHidden
+		displayFolder: Others
+		lineageTag: 0d7f0e3a-6bb9-45f1-9534-04a87645ec5d
+
+		changedProperty = IsHidden
+
+	measure 'Orders Count' = DISTINCTCOUNT(Orders[Order ID])
+		formatString: 0
+		displayFolder: General
+		lineageTag: 954513f9-0b2c-40c1-a9d7-f21708565f36
+
+	measure 'Success Rate Orders' =
+			
+			([Orders Count] - [Returned Orders Count]) / [Orders Count]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Performance
+		lineageTag: d43b42f5-d4e4-423b-adbf-bf1401af6a94
+
+	measure 'Total Returned Profit' = ```
+			
+			VAR ReturnedOrderIDs = VALUES(Returns[Order ID])
+			VAR TotalReturnedProfit = 
+			    CALCULATE(
+			        SUM(Orders[Profit]),
+			        Orders[Order ID] IN ReturnedOrderIDs
+			    )
+			RETURN
+			    TotalReturnedProfit
+			```
+		displayFolder: General
+		lineageTag: e03c22e3-49dd-45d9-b3b9-44bcbda0400f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Net Profit' =
+			
+			SUM(Orders[Profit]) - [Total Returned Profit]
+		displayFolder: General
+		lineageTag: 894c2d90-f13b-426f-83b0-9793d8b57301
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Profit' = SUM(Orders[Profit])
+		displayFolder: General
+		lineageTag: 2a916626-6446-4682-8adc-c2ef9a5c4895
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Net Profit YTD' = ```
+			
+			CALCULATE(
+			    [Net Profit], 
+			    DATESYTD(Calendar[Date]))
+			```
+		displayFolder: Time Intelligence
+		lineageTag: 37e4ed72-8900-40d8-9c08-e1771bd58bf5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Yoy Net Profit Growth' = ```
+			
+			DIVIDE(
+			    [Net Profit YTD] - [Previous Year Net Profit], 
+			    [Previous Year Net Profit], 
+			    0)
+			```
+		displayFolder: Time Intelligence
+		lineageTag: 47a1cce5-15fc-4a74-a056-7205702b86c6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Previous Year Net Profit' = ```
+			
+			CALCULATE(
+			    [Net Profit], 
+			    SAMEPERIODLASTYEAR(Calendar[Date]))
+			```
+		displayFolder: Time Intelligence
+		lineageTag: 351c96c5-4019-4278-b2cf-5db6124306c3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YoY Net Profit Growth Color' = IF([Yoy Net Profit Growth]>0, "Green", "Red")
+		isHidden
+		displayFolder: Others
+		lineageTag: 25c5c286-af53-4626-a3c3-205194b1f789
+
+		changedProperty = IsHidden
+
+	measure 'Average Shipping Duration' =
+			
+			AVERAGEX(
+			    Orders,
+			    DATEDIFF(Orders[Order Date], Orders[Ship Date], DAY))
+		displayFolder: Performance
+		lineageTag: 55ee4fd5-916a-4b3c-9393-9ef99650f730
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Budget Amount' = ```
+			
+			CALCULATE(
+			    SUM(BudgetAmount[Grand Total]),
+			    TREATAS(
+			        VALUES(Orders[Sub-Category]), 
+			        BudgetAmount[Sub-Category]))
+			```
+		displayFolder: General
+		lineageTag: f3eb0c97-240a-4dcf-bce3-cc246c63c973
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Customer Value' =
+			
+			AVERAGEX(
+			    VALUES(Orders[Customer ID]),
+			    [Total Actual])
+		displayFolder: Customers Analyse
+		lineageTag: 32238b72-c220-4ec6-9343-4d90a5f174bb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Customers Count' =
+			
+			DISTINCTCOUNT(Orders[Customer ID])
+		formatString: 0
+		displayFolder: Customers Analyse
+		lineageTag: b6a221ca-4588-4786-b1a2-b4039287d1dc
+
+	measure 'Average Order Value' =
+			
+			[Total Actual] / DISTINCTCOUNT(Orders[Order ID])
+		displayFolder: Performance
+		lineageTag: 249bb080-d02c-4ed1-81b5-8862b92e381c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Central Actual' =
+			
+			CALCULATE([Total Actual],
+			Orders[Region] = "Central")
+		displayFolder: Performance
+		lineageTag: c702c369-fde7-4c4c-80ba-742e435ede81
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'East Actual' =
+			
+			CALCULATE([Total Actual],
+			Orders[Region] = "East")
+		displayFolder: Performance
+		lineageTag: 1971cd4f-a4e4-40af-bee5-54d69a436c37
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'South Actual' =
+			
+			CALCULATE([Total Actual],
+			Orders[Region] = "South")
+		displayFolder: Performance
+		lineageTag: 19cc9f69-49da-45f6-a915-e2a83245032b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'West Actual' =
+			
+			CALCULATE([Total Actual],
+			Orders[Region] = "West")
+		displayFolder: Performance
+		lineageTag: a0511334-cf49-499e-ad82-3f67838fc46c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition *Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

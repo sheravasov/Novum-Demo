@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "3235252e77bea1886e66",
+  "position": {
+    "x": 283.33333333333337,
+    "y": 91.666666666666671,
+    "z": 11000,
+    "height": 236.66666666666669,
+    "width": 443.33333333333337,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Regional Performance",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "18pt",
+                      "color": "#12239e"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "When we approach according to the budget and analyze the Actual value, we know that there is a positive correlation. The Budget rate increases at the same rate as the Actual value. In terms of return orders, there are almost 4-5 times more return orders in the West region than in other regions, the reason for this is that there are more Cunsomer type customers. Because Consumer type customers buy more personal products and are more likely to return the product when there is a problem.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "isHidden": true
+}

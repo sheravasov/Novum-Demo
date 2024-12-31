@@ -1,0 +1,120 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/1.2.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU08",
+      "reportVersionAtImport": "5.57",
+      "type": "SharedResources"
+    }
+  },
+  "layoutOptimization": "None",
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY24SU08",
+          "path": "BaseThemes/CY24SU08.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "novum_BG6528555618116467.jpg",
+          "path": "novum_BG6528555618116467.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "novum_BG08151822766258632.jpg",
+          "path": "novum_BG08151822766258632.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "image-removebg-preview25689039143049586.png",
+          "path": "image-removebg-preview25689039143049586.png",
+          "type": "Image"
+        },
+        {
+          "name": "image-removebg-preview_(1)41532357080310756.png",
+          "path": "image-removebg-preview_(1)41532357080310756.png",
+          "type": "Image"
+        },
+        {
+          "name": "2062783-2005644995806777022.png",
+          "path": "2062783-2005644995806777022.png",
+          "type": "Image"
+        },
+        {
+          "name": "8149873132364809519006.png",
+          "path": "8149873132364809519006.png",
+          "type": "Image"
+        },
+        {
+          "name": "8149875623862971299525.png",
+          "path": "8149875623862971299525.png",
+          "type": "Image"
+        },
+        {
+          "name": "2062783-20038623415985136633.png",
+          "path": "2062783-20038623415985136633.png",
+          "type": "Image"
+        },
+        {
+          "name": "novum_BG7251414669111018.jpg",
+          "path": "novum_BG7251414669111018.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "novum_BG8340993441107947.jpg",
+          "path": "novum_BG8340993441107947.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "novum_BG7525942027420667.jpg",
+          "path": "novum_BG7525942027420667.jpg",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

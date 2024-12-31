@@ -1,0 +1,47 @@
+relationship 2a310211-be86-2b8d-e688-49c15ab4969f
+	fromColumn: Orders.'Order ID'
+	toColumn: Returns.'Order ID'
+
+relationship 72511f0b-f4ee-481e-9ed7-9a33adadc8fb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.Date
+	toColumn: LocalDateTable_e4cb9b33-f24d-4913-8631-66698f379737.Date
+
+relationship eb5c3c97-f651-d912-e0e3-1e475ef77f4f
+	fromColumn: BudgetAmount.Date
+	toColumn: Calendar.Date
+
+relationship 55dd758c-870b-6e7e-a188-a5f0d6931791
+	fromColumn: Orders.'Order Date'
+	toColumn: Calendar.Date
+
+relationship 222d5843-fe91-a127-d929-579108706c78
+	isActive: false
+	fromColumn: Orders.'Ship Date'
+	toColumn: Calendar.Date
+
+relationship b55415a0-13f2-4e12-a6ca-b86784afee57
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Returns.OrDate
+	toColumn: LocalDateTable_860d196d-3080-4d5c-b0eb-d391492e0c3b.Date
+
+relationship 167d1ba5-8151-4408-bcea-6c07ebe44ccb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Orders.'First order date EOM'
+	toColumn: LocalDateTable_5ff25312-4144-4877-8562-fafadc7030ab.Date
+
+relationship df0eaa26-6ad2-431c-8a12-13d172f3d81a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Return Orders'.'Order Date'
+	toColumn: LocalDateTable_86dd66c8-75f6-4aa9-8090-41d9d616fa56.Date
+
+relationship 3c94cf29-10da-4e84-8785-4fbbbc2d9747
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Return Orders'.'Ship Date'
+	toColumn: LocalDateTable_58231ff7-4e78-4a04-a995-a315dd6209db.Date
+
+relationship 7b264d53-1a65-4323-8cfd-24dac202e8e2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Return Orders'.'First order date EOM'
+	toColumn: LocalDateTable_d746e804-9d36-4ca5-8b19-db9c5161c0f2.Date
+

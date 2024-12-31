@@ -1,0 +1,36 @@
+table 'After Month Sales'
+	isHidden
+	lineageTag: 5bf1310f-b060-4deb-abfb-81016423a833
+
+	measure 'Retention Rate' =
+			
+			VAR CurrentMonthAfter = SELECTEDVALUE('After Month Sales'[Value])
+			VAR CurrentFirstOrderMonth = SELECTEDVALUE(Orders[First order date EOM])
+			
+			RETURN
+			CALCULATE(DISTINCTCOUNT(Orders[Customer ID]),
+			FILTER(
+			    Orders,
+			    EOMONTH(Orders[Order Date], 0) = EOMONTH(CurrentFirstOrderMonth, CurrentMonthAfter)))
+		formatString: 0
+		isHidden
+		lineageTag: 13bc140a-3e8c-4d1f-9916-21021bf23fbc
+
+	column Value
+		isHidden
+		formatString: 0
+		lineageTag: d1de1b5f-dd96-4597-8fa8-ce540dcf0171
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'After Month Sales' = calculated
+		mode: import
+		source =
+				
+				GENERATESERIES(1, 12, 1)
+
+	annotation PBI_Id = 030224cc7e644402929a1a9a2ce705fc
+
